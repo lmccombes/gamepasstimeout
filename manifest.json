@@ -1,18 +1,30 @@
 {
   "name": "NFL Gamepass International Timeout",
   "description": "Removes the progress bar and remaining time from game replays for a fully spoiler-free experience.",
-  "version": "1.0",
+  "version": "0.1",
   "manifest_version": 3,
+  "host_permissions": ["*://*.nflgamepass.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": "icons/icon16.png"
+  },
   "content_scripts": [
     {
-      "matches": ["*://*.nflgamepass.com/*/games/*"],
-      "js": ["script.js"]
-    }
-  ],
-  "host_permissions": ["*://*.nflgamepass.com/*"],
+    "matches": ["*://*.nflgamepass.com/*"],
+    "js": ["content.js"],
+    "css": ["styles.css"]
+  }],
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
-  }
+  },
+  "permissions": [
+    "declarativeContent",
+    "activeTab",
+    "scripting",
+    "storage"
+  ]
 }
